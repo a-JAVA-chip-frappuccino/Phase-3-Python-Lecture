@@ -1,9 +1,7 @@
 # mutable: structure can be changed
 # immutable: structure cannot be changed
 
-# sequences
-
-'''
+# sequences (mutable)
 
 for i in range(1, 6, 1): # (1, 2, 3, 4, 5)
     print(i)
@@ -11,11 +9,7 @@ for i in range(1, 6, 1): # (1, 2, 3, 4, 5)
 for i in range(10, -1, -2): # (10, 8, 6, 4, 2, 0)
     print(i)
 
-'''
-
-# lists
-
-'''
+# lists (mutable)
 
 nums = [1, 2, 3, 4, 5]
 
@@ -51,6 +45,7 @@ for color in colors:
     if color[0] == 'p' or color[0] == 'g':
         colorsFirstLetter.append(color[0])
 
+# [item for item in list if condition]
 colorsFirstLetter2 = [color[0] for color in colors if color[0] == 'p' or color[0] == 'g']
 
 nums = [0, 1, 2, 3, 4, 5]
@@ -65,28 +60,20 @@ numsCubed2 = [(num * num * num) for num in nums if num > 1]
 
 print(numsCubed2)
 
-'''
+# dictionaries (mutable)
 
-# dictionaries
+squares = {1 : 1, 2 : 4, 3 : 9, 4 : 16} # key : value pairs
 
-'''
+squares[4] # retrieve value at key
 
-squares = {1 : 1, 2 : 4, 3 : 9, 4 : 16}
-
-squares[4]
-
-squares[5] = 25
+squares[5] = 25 # change value at key
 
 for key in squares:
     print(squares[key])
 
-'''
+# sets (mutable)
 
-# sets
-
-'''
-
-# animals = {"dog", "panda", "hamster"}
+animals = {"dog", "panda", "hamster"}
 
 animals = set()
 
@@ -98,8 +85,6 @@ animals.add("dog") # will not add (duplicate)
 for item in animals:
     print(item)
 
-'''
-
-# tuples
+# tuples (immutable)
 
 coordinate = (2, 4, -12) # (x, y, z) coordinate
