@@ -1,11 +1,12 @@
 class Book():
 
     # class attribute
-    all = []
+    all_books = []
 
     # constructor
     def __init__(self, isbn, title, author, page_count):
         self._isbn = isbn
+        self.genre = ""
 
         if type(title) == str and len(title) > 1:
             self._title = title
@@ -22,7 +23,7 @@ class Book():
         else:
             raise Exception
         
-        Book.all.append(self) # appends instance to class attribute upon creation
+        Book.all_books.append(self) # appends instance to class attribute upon creation
 
     def get_isbn(self):
         return self._isbn
@@ -72,12 +73,28 @@ class Book():
     
     def __str__(self):
         return f"Title: {self._title}, Author: {self._author}"
+    
+    def give_a_genre(self, inputted_genre):
+        from Genre import Genre
 
-# book1 = Book(1234, "where the red fern grows", "jane smith", 123)
+        if inputted_genre and isinstance(inputted_genre, Genre):
+            self.genre = inputted_genre
+        else:
+            raise Exception
 
-# book2 = Book(5678, "twilight", "stephanie meyer", 350)
+hitchhiker = Book(1234, "The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 320)
+leibowitz = Book(2345, "A Canticle for Leibowitz", "P. Sherman", 300)
+bridgerton = Book(3456, "Bridgerton", "W WW", 200)
+wib = Book(4567, "The Woman in Black", "fjjif we", 100)
+jdc = Book(5678, "Jews Don't Count", "David Baddiel", 120)
 
-book3 = Book(9090, "lord of the rings", "j r r tolkein", 1100)
+from Genre import scifi
+from Genre import romance
+from Genre import horror
+from Genre import nonfic
 
-# for book in Book.all:
-#     book.check_out()
+hitchhiker.give_a_genre(scifi)
+leibowitz.give_a_genre(scifi)
+bridgerton.give_a_genre(romance)
+wib.give_a_genre(horror)
+jdc.give_a_genre(nonfic)

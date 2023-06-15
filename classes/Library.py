@@ -1,5 +1,7 @@
 class Library():
 
+    all_libraries = []
+
     def __init__(self, branch_name, county, number_of_staff):
         
         # will work, however not in-depth data check
@@ -26,6 +28,13 @@ class Library():
             self._number_of_staff = number_of_staff
         else:
             raise Exception
+        
+        Library.all_libraries.append(self)
+
+        from Book import Book
+        
+        for book in Book.all_books:
+            self.add_a_book(book)
 
     @property
     def branch_name(self):
@@ -69,17 +78,19 @@ class Library():
             raise Exception
 
 bpl = Library("Boston Public Library", "Boston", 100)
+loc = Library("Library of Congress", "DC", 300)
 
-from Book import Book
+from Book import hitchhiker
+from Book import leibowitz
+from Book import bridgerton
+from Book import wib
+from Book import jdc
 
-from Book import book3 
+bpl.add_a_book(hitchhiker)
+bpl.add_a_book(leibowitz)
+bpl.add_a_book(bridgerton)
+bpl.add_a_book(wib)
+bpl.add_a_book(jdc)
 
-fern = Book(1234, "where the red fern grows", "john smith", 150)
-twi = Book(5678, "twilight", "stephanie meyer", 350)
-
-bpl.add_a_book(fern)
-bpl.add_a_book(twi)
-bpl.add_a_book(book3)
-
-for book_in_lib in bpl.list_of_books:
-    print(book_in_lib)
+loc.add_a_book(leibowitz)
+loc.add_a_book(wib)
